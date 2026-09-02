@@ -1,0 +1,5 @@
+Timestamp,Strategy,Seed,TimeScale,DurationHours,TotalTasks,CompletedTasks,CompletionRate,AverageWait,P95Wait,Escalations,TotalDistance,RoutineCompleted
+2026/5/10 14:47,FCFS,12345,120,1,5,3,0.6,310.004,345.3659,0,406.4639,0
+2026-05-10 14:50:38,ShortestDistance,12345,120,2,50,40,0.7692308,295.9949,588.0499,28,1392.02,0
+2026-05-10 14:53:28,AIScore,12345,300,3,52,40,0.7407407,346.0506,653.5458,39,2424.44,0
+2026-05-10 14:55:01,PriorityFirst,12345,300,5,64,52,0.7941176,344.0844,625.1268,39,3745.519,2

@@ -1,0 +1,179 @@
+{
+  "experiment": {
+    "start_hour": 5,
+    "start_minute": 0,
+    "duration_hours": 10,
+    "time_scale": 300,
+    "use_random_seed": true,
+    "random_seed": 12345,
+    "dispatch_mode": "shortest_distance"
+  },
+
+  "scene": {
+    "nurse_count": 6,
+    "room_count": 12,
+    "room_ids": ["A1", "A2", "A3", "A4", "A5", "A6", "B1", "B2", "B3", "B4", "B5", "B6"]
+  },
+
+  "task_generation": {
+    "auto_generate": true,
+
+    "normal": {
+      "window_name": "Normal",
+      "start_hour": 0,
+      "end_hour": 24,
+      "min_spawn_interval_seconds": 540,
+      "max_spawn_interval_seconds": 780,
+      "task_type_weights": {
+        "light": 50,
+        "medium": 35,
+        "heavy": 15
+      },
+      "task_count_weights_per_burst": {
+        "one": 100,
+        "two": 0,
+        "three": 0,
+        "four": 0
+      }
+    },
+
+    "morning": {
+      "window_name": "Morning",
+      "start_hour": 6,
+      "end_hour": 9,
+      "min_spawn_interval_seconds": 240,
+      "max_spawn_interval_seconds": 360,
+      "task_type_weights": {
+        "light": 60,
+        "medium": 30,
+        "heavy": 10
+      },
+      "task_count_weights_per_burst": {
+        "one": 20,
+        "two": 45,
+        "three": 25,
+        "four": 10
+      }
+    },
+
+    "midday": {
+      "window_name": "Midday",
+      "start_hour": 10,
+      "end_hour": 14,
+      "min_spawn_interval_seconds": 300,
+      "max_spawn_interval_seconds": 480,
+      "task_type_weights": {
+        "light": 35,
+        "medium": 45,
+        "heavy": 20
+      },
+      "task_count_weights_per_burst": {
+        "one": 30,
+        "two": 45,
+        "three": 20,
+        "four": 5
+      }
+    },
+
+    "evening": {
+      "window_name": "Evening",
+      "start_hour": 17,
+      "end_hour": 21,
+      "min_spawn_interval_seconds": 240,
+      "max_spawn_interval_seconds": 360,
+      "task_type_weights": {
+        "light": 20,
+        "medium": 35,
+        "heavy": 45
+      },
+      "task_count_weights_per_burst": {
+        "one": 15,
+        "two": 35,
+        "three": 35,
+        "four": 15
+      }
+    }
+  },
+
+  "task_duration": {
+    "light_min_minutes": 2,
+    "light_max_minutes": 5,
+    "medium_min_minutes": 6,
+    "medium_max_minutes": 15,
+    "heavy_min_minutes": 12,
+    "heavy_max_minutes": 30
+  },
+
+  "escalation": {
+    "min_escalation_minutes": 8,
+    "max_escalation_minutes": 12,
+    "light_to_medium": true,
+    "medium_to_heavy": true,
+    "heavy_secondary_call": true,
+    "reset_waiting_time_after_escalation": true
+  },
+
+  "nurse": {
+    "move_speed": 10,
+    "work_duration_default": 5,
+    "enable_shift_system": true,
+    "shift_length_hours": 8,
+    "max_working_duration_minutes": 120,
+
+    "fatigue": {
+      "initial": 0,
+      "heavy_task_fatigue_increase": 0.08,
+      "fatigue_recovery_per_minute": 0.002,
+      "fatigue_speed_coefficient": 0.5,
+      "unavailable_threshold": 1.0,
+      "rest_until": 0.5,
+      "min_speed_multiplier": 0.2
+    }
+  },
+
+  "routine_tasks": {
+    "enabled": true,
+    "rooms_per_trigger": 2,
+    "routine_interval_seconds": 7200,
+    "medication_duration_min_minutes": 2,
+    "medication_duration_max_minutes": 5,
+    "blocked_by_normal_task": true
+  },
+
+  "dispatch": {
+    "available_modes": [
+      "fcfs",
+      "shortest_distance",
+      "priority_first",
+      "ai_score",
+      "rl"
+    ],
+
+    "priority_values": {
+      "light": 1,
+      "medium": 2,
+      "heavy": 3
+    },
+
+    "ai_score_weights": {
+      "distance_weight": 1,
+      "fatigue_weight": 20,
+      "priority_weight": 10,
+      "waiting_time_weight": 1
+    }
+  },
+
+  "metrics": {
+    "track_total_tasks_created": true,
+    "track_completed_tasks": true,
+    "track_routine_created": true,
+    "track_routine_completed": true,
+    "track_average_waiting_time": true,
+    "track_max_waiting_time": true,
+    "track_p95_waiting_time": true,
+    "track_escalations": true,
+    "track_total_distance": true,
+    "track_average_fatigue": true,
+    "export_csv": true
+  }
+}
